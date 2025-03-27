@@ -4027,18 +4027,15 @@
             }));
         }
     }), 0);
-    const footer_selector = ".footer";
-    const main_body_selector = ".main-body";
-    const hero_page_selector = ".hero-page";
-    const hero_selector = ".hero";
-    const header_selector = "header";
-    const posts_aside_selector = ".posts__aside";
-    const header_full_selector = ".header";
-    const MARGIN_OFFSET = 20;
+    const footer = document.querySelector(".footer");
+    const mainBody = document.querySelector(".main-body");
+    const heroPage = document.querySelector(".hero-page");
+    const hero = document.querySelector(".hero");
+    const html = document.documentElement;
+    const header = document.querySelector(".header");
+    const aside = document.querySelector(".posts__aside");
     function adjustMainBodyMargins() {
-        const footer = document.querySelector(footer_selector);
-        const mainBody = document.querySelector(main_body_selector);
-        const heroPage = document.querySelector(hero_page_selector);
+        const MARGIN_OFFSET = 20;
         if (footer && mainBody) {
             const footerHeight = footer.offsetHeight;
             const marginBottom = Math.max(0, footerHeight - MARGIN_OFFSET);
@@ -4051,15 +4048,12 @@
         }
     }
     function handleFooterVisibility() {
-        const footer = document.querySelector(footer_selector);
-        const hero = document.querySelector(hero_selector) || document.querySelector(hero_page_selector);
-        if (!hero || !footer) return;
-        const heroHeight = hero.offsetHeight;
+        const currentHero = hero || heroPage;
+        if (!currentHero || !footer) return;
+        const heroHeight = currentHero.offsetHeight;
         footer.style.visibility = window.scrollY > heroHeight ? "visible" : "hidden";
     }
     function adjustElementsPosition() {
-        const footer = document.querySelector(footer_selector);
-        const heroPage = document.querySelector(hero_page_selector);
         const viewportHeight = window.innerHeight;
         if (footer) {
             const footerHeight = footer.offsetHeight;
@@ -4071,11 +4065,6 @@
         }
     }
     function handleHeaderAndMainBodyInteraction() {
-        const html = document.documentElement;
-        const header = document.querySelector(header_selector);
-        const mainBody = document.querySelector(main_body_selector);
-        const hero = document.querySelector(hero_selector);
-        const heroPage = document.querySelector(hero_page_selector);
         if (!header || !mainBody || !html) return;
         const getHeaderHeight = () => {
             const headerHeightVar = getComputedStyle(document.documentElement).getPropertyValue("--header-h").trim();
@@ -4099,14 +4088,12 @@
         checkClasses();
     }
     function checkAsideHeight() {
-        const asideElement = document.querySelector(posts_aside_selector);
-        const headerElement = document.querySelector(header_full_selector);
-        if (asideElement && headerElement) {
+        if (aside && header) {
             const windowHeight = window.innerHeight;
-            const headerHeight = headerElement.offsetHeight;
-            const asideHeight = asideElement.offsetHeight;
+            const headerHeight = header.offsetHeight;
+            const asideHeight = aside.offsetHeight;
             const availableHeight = windowHeight - headerHeight;
-            asideElement.classList.toggle("posts__aside--bottom", asideHeight > availableHeight);
+            aside.classList.toggle("posts__aside--bottom", asideHeight > availableHeight);
         }
     }
     document.addEventListener("DOMContentLoaded", (() => {
