@@ -3969,25 +3969,7 @@
                 centeredSlides: true,
                 speed: 800,
                 loop: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true
-                },
-                navigation: {
-                    prevEl: ".swiper-button-prev",
-                    nextEl: ".swiper-button-next"
-                },
-                on: {}
-            });
-            new swiper_core_Swiper(".post__slider", {
-                modules: [ Pagination ],
-                observer: true,
-                observeParents: true,
-                slidesPerView: 1,
-                spaceBetween: 8,
-                speed: 800,
-                initialSlide: 1,
-                loop: true,
+                lazy: true,
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true
@@ -4000,6 +3982,39 @@
             });
         }
     }
+    const swiperOptions = {
+        modules: [ Pagination ],
+        observer: true,
+        observeParents: true,
+        slidesPerView: 1,
+        spaceBetween: 8,
+        speed: 800,
+        initialSlide: 1,
+        loop: true,
+        lazy: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true
+        }
+    };
+    const observer = new IntersectionObserver((entries => {
+        entries.forEach((entry => {
+            const swiperElement = entry.target;
+            if (entry.isIntersecting) {
+                if (!swiperElement.swiper) swiperElement.swiper = new swiper_core_Swiper(swiperElement, swiperOptions);
+            } else if (swiperElement.swiper) {
+                swiperElement.swiper.destroy(true, true);
+                swiperElement.swiper = null;
+            }
+        }));
+    }), {
+        root: null,
+        rootMargin: "200px",
+        threshold: 0
+    });
+    document.querySelectorAll(".swiper--lazy").forEach((el => {
+        observer.observe(el);
+    }));
     window.addEventListener("load", (function(e) {
         initSliders();
     }));
@@ -4012,11 +4027,18 @@
             }));
         }
     }), 0);
+    const footer_selector = ".footer";
+    const main_body_selector = ".main-body";
+    const hero_page_selector = ".hero-page";
+    const hero_selector = ".hero";
+    const header_selector = "header";
+    const posts_aside_selector = ".posts__aside";
+    const header_full_selector = ".header";
+    const MARGIN_OFFSET = 20;
     function adjustMainBodyMargins() {
-        const footer = document.querySelector(".footer");
-        const mainBody = document.querySelector(".main-body");
-        const heroPage = document.querySelector(".hero-page");
-        const MARGIN_OFFSET = 20;
+        const footer = document.querySelector(footer_selector);
+        const mainBody = document.querySelector(main_body_selector);
+        const heroPage = document.querySelector(hero_page_selector);
         if (footer && mainBody) {
             const footerHeight = footer.offsetHeight;
             const marginBottom = Math.max(0, footerHeight - MARGIN_OFFSET);
@@ -4028,39 +4050,35 @@
             mainBody.style.marginTop = `${marginTop}px`;
         }
     }
-    document.addEventListener("DOMContentLoaded", adjustMainBodyMargins);
-    window.addEventListener("resize", adjustMainBodyMargins);
-    document.addEventListener("scroll", (function() {
-        const footer = document.querySelector(".footer");
-        const hero = document.querySelector(".hero") || document.querySelector(".hero-page");
+    function handleFooterVisibility() {
+        const footer = document.querySelector(footer_selector);
+        const hero = document.querySelector(hero_selector) || document.querySelector(hero_page_selector);
         if (!hero || !footer) return;
         const heroHeight = hero.offsetHeight;
-        if (window.scrollY > heroHeight) footer.classList.add("visible"); else footer.classList.remove("visible");
-    }));
+        footer.style.visibility = window.scrollY > heroHeight ? "visible" : "hidden";
+    }
     function adjustElementsPosition() {
-        const footer = document.querySelector(".footer");
-        const heroPage = document.querySelector(".hero-page");
+        const footer = document.querySelector(footer_selector);
+        const heroPage = document.querySelector(hero_page_selector);
         const viewportHeight = window.innerHeight;
         if (footer) {
             const footerHeight = footer.offsetHeight;
-            if (footerHeight > viewportHeight) footer.classList.add("footer--static"); else footer.classList.remove("footer--static");
+            footer.classList.toggle("footer--static", footerHeight > viewportHeight);
         }
         if (heroPage) {
             const heroHeight = heroPage.offsetHeight;
-            if (heroHeight > viewportHeight) heroPage.classList.add("hero-page--static"); else heroPage.classList.remove("hero-page--static");
+            heroPage.classList.toggle("hero-page--static", heroHeight > viewportHeight);
         }
     }
-    document.addEventListener("DOMContentLoaded", adjustElementsPosition);
-    window.addEventListener("resize", adjustElementsPosition);
-    document.addEventListener("DOMContentLoaded", (() => {
+    function handleHeaderAndMainBodyInteraction() {
         const html = document.documentElement;
-        const header = document.querySelector("header");
-        const mainBody = document.querySelector(".main-body");
-        const hero = document.querySelector(".hero");
-        const heroPage = document.querySelector(".hero-page");
+        const header = document.querySelector(header_selector);
+        const mainBody = document.querySelector(main_body_selector);
+        const hero = document.querySelector(hero_selector);
+        const heroPage = document.querySelector(hero_page_selector);
         if (!header || !mainBody || !html) return;
         const getHeaderHeight = () => {
-            const headerHeightVar = getComputedStyle(document.documentElement).getPropertyValue("--header-height").trim();
+            const headerHeightVar = getComputedStyle(document.documentElement).getPropertyValue("--header-h").trim();
             const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
             return parseFloat(headerHeightVar) * rootFontSize;
         };
@@ -4073,26 +4091,36 @@
             const headerTouchesMainBody = window.scrollY >= mainBodyMarginTop - headerHeight;
             const heroCondition = heroIsAbsolute && window.scrollY > 0;
             const heroPageCondition = heroPageIsAbsolute && window.scrollY > 0;
-            if (headerTouchesMainBody || heroCondition || heroPageCondition) header.classList.add("on-main-body-header"); else header.classList.remove("on-main-body-header");
-            if (headerTouchesMainBody) html.classList.add("on-main-body"); else html.classList.remove("on-main-body");
+            header.classList.toggle("on-main-body-header", headerTouchesMainBody || heroCondition || heroPageCondition);
+            html.classList.toggle("on-main-body", headerTouchesMainBody);
         };
         window.addEventListener("scroll", checkClasses);
         window.addEventListener("resize", checkClasses);
         checkClasses();
-    }));
+    }
     function checkAsideHeight() {
-        const asideElement = document.querySelector(".posts__aside");
-        const headerElement = document.querySelector(".header");
+        const asideElement = document.querySelector(posts_aside_selector);
+        const headerElement = document.querySelector(header_full_selector);
         if (asideElement && headerElement) {
             const windowHeight = window.innerHeight;
             const headerHeight = headerElement.offsetHeight;
             const asideHeight = asideElement.offsetHeight;
             const availableHeight = windowHeight - headerHeight;
-            if (asideHeight > availableHeight) asideElement.classList.add("posts__aside--bottom"); else asideElement.classList.remove("posts__aside--bottom");
+            asideElement.classList.toggle("posts__aside--bottom", asideHeight > availableHeight);
         }
     }
-    document.addEventListener("DOMContentLoaded", checkAsideHeight);
-    window.addEventListener("resize", checkAsideHeight);
+    document.addEventListener("DOMContentLoaded", (() => {
+        adjustMainBodyMargins();
+        adjustElementsPosition();
+        handleHeaderAndMainBodyInteraction();
+        checkAsideHeight();
+    }));
+    window.addEventListener("resize", (() => {
+        adjustMainBodyMargins();
+        adjustElementsPosition();
+        checkAsideHeight();
+    }));
+    window.addEventListener("scroll", handleFooterVisibility);
     window["FLS"] = true;
     menuInit();
     spollers();
