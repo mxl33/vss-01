@@ -5,11 +5,19 @@
 	<title>О Компании | ВСС</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250327023801">
-	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20250411233907">
 	<meta name="robots" content="noindex, nofollow">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Preload Greycliff CF шрифты -->
+	<link rel="preload" href="fonts/GreycliffCF-Bold.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/GreycliffCF-DemiBold.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/GreycliffCF-Medium.woff2" as="font" type="font/woff2" crossorigin>
+
+	<!-- Preload Involve шрифты -->
+	<link rel="preload" href="fonts/Involve-Bold.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/Involve-Medium.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/Involve-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
 <body>
@@ -118,8 +126,6 @@
 						</a>
 
 					</address>
-
-					<!-- <a href="tel:+78129228707" class="header__contacts-link header__contacts-link--tablet link link-padding">8 812 922-87-07</a> -->
 
 				</div>
 			</div>
@@ -253,24 +259,63 @@
 
 							<div class="team__jobs">
 
-								<article class="team__job">
+								<!-- <article class="team__item team__item--job">
 
-									<a href="jobs.html#mechanic" class="team__job-body">
+                                    <a href="jobs.html#mechanic" class="team__item-body">
 
-										<div class="team__job-img">
+                                        <div class="team__item-img">
+                                            <img src="img/staff/operator.webp" alt="Оператор" width="137" height="100"
+                                                loading="lazy">
+                                        </div>
+
+                                        <h3 class="team__item-title">Механик</h3>
+
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="team__item-arrow-link btn__arrow-link arrow-link">
+                                            <path
+                                                d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z"
+                                                fill="white" />
+                                        </svg>
+
+                                    </a>
+
+                                    <div class="team__item-footer">
+                                        <a href="mailto:vss-company@bk.ru"
+                                            class="team__item-btn btn btn--transparent-gray-600  btn--sm">
+
+                                            <span class="btn__text link">Отправить резюме</span>
+
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg" class="btn__arrow-link arrow-link">
+                                                <path
+                                                    d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z"
+                                                    fill="white" />
+                                            </svg>
+
+                                        </a>
+                                    </div>
+
+                                </article> -->
+
+								<article class="team__item team__item--job">
+
+									<a href="jobs.html#mechanic" class="team__item-body">
+
+										<div class="team__item-img">
 											<img src="img/staff/operator.webp" alt="Оператор" width="137" height="100" loading="lazy">
 										</div>
 
-										<h3 class="team__job-title">Механик</h3>
+										<h3 class="team__item-title">Механик</h3>
 
-										<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="team__job-arrow-link btn__arrow-link arrow-link">
+										<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="team__item-arrow-link btn__arrow-link arrow-link">
 											<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
 										</svg>
 
 									</a>
 
-									<div class="team__job-footer">
-										<a href="mailto:vss-company@bk.ru" class="team__job-btn btn btn--transparent-gray-600  btn--sm">
+									<div class="team__item-footer">
+										<a href="mailto:vss-company@bk.ru" class="team__item-btn btn btn--transparent-gray-600  btn--sm">
 
 											<span class="btn__text link">Отправить резюме</span>
 
@@ -283,24 +328,24 @@
 
 								</article>
 
-								<article class="team__job">
+								<article class="team__item team__item--job">
 
-									<a href="jobs.html#mechanic" class="team__job-body">
+									<a href="jobs.html#mechanic" class="team__item-body">
 
-										<div class="team__job-img">
+										<div class="team__item-img">
 											<img src="img/staff/operator.webp" alt="Оператор" width="137" height="100" loading="lazy">
 										</div>
 
-										<h3 class="team__job-title">Механик</h3>
+										<h3 class="team__item-title">Механик</h3>
 
-										<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="team__job-arrow-link btn__arrow-link arrow-link">
+										<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="team__item-arrow-link btn__arrow-link arrow-link">
 											<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
 										</svg>
 
 									</a>
 
-									<div class="team__job-footer">
-										<a href="mailto:vss-company@bk.ru" class="team__job-btn btn btn--transparent-gray-600  btn--sm">
+									<div class="team__item-footer">
+										<a href="mailto:vss-company@bk.ru" class="team__item-btn btn btn--transparent-gray-600  btn--sm">
 
 											<span class="btn__text link">Отправить резюме</span>
 
@@ -313,35 +358,17 @@
 
 								</article>
 
-								<article class="team__job">
+								<!-- <div class="team__item team__item--no-job">
+                                    <span>Нет доступных вакансий</span>
+                                </div>
 
-									<a href="jobs.html#mechanic" class="team__job-body">
+                                <div class="team__item team__item--no-job">
+                                    <span>Нет доступных вакансий</span>
+                                </div> -->
 
-										<div class="team__job-img">
-											<img src="img/staff/operator.webp" alt="Оператор" width="137" height="100" loading="lazy">
-										</div>
-
-										<h3 class="team__job-title">Механик</h3>
-
-										<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="team__job-arrow-link btn__arrow-link arrow-link">
-											<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
-										</svg>
-
-									</a>
-
-									<div class="team__job-footer">
-										<a href="mailto:vss-company@bk.ru" class="team__job-btn btn btn--transparent-gray-600  btn--sm">
-
-											<span class="btn__text link">Отправить резюме</span>
-
-											<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="btn__arrow-link arrow-link">
-												<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
-											</svg>
-
-										</a>
-									</div>
-
-								</article>
+								<div class="team__item team__item--no-job">
+									<span>Нет доступных вакансий</span>
+								</div>
 
 							</div>
 
@@ -391,7 +418,7 @@
 
 					<div class="projects__slider swiper">
 
-						<!-- <div class="swiper-pagination"></div> -->
+
 
 						<div class="projects__wrapper swiper-wrapper">
 
@@ -488,7 +515,7 @@
 														</button>
 													</div>
 
-													<!-- <div class="swiper-pagination"></div> -->
+
 
 												</div>
 
@@ -593,7 +620,7 @@
 														</button>
 													</div>
 
-													<!-- <div class="swiper-pagination"></div> -->
+
 
 												</div>
 
@@ -698,7 +725,7 @@
 														</button>
 													</div>
 
-													<!-- <div class="swiper-pagination"></div> -->
+
 
 												</div>
 
@@ -803,7 +830,7 @@
 														</button>
 													</div>
 
-													<!-- <div class="swiper-pagination"></div> -->
+
 
 												</div>
 
@@ -908,7 +935,7 @@
 														</button>
 													</div>
 
-													<!-- <div class="swiper-pagination"></div> -->
+
 
 												</div>
 
@@ -991,10 +1018,10 @@
 									выберет
 									оптимальный метод строительного водопонижения</p>
 
-								<div class="contact-us__contacts-group contacts-group">
+								<div class="contact-us__contacts-group">
 
-									<div class="contacts-group__links">
-										<a href="tel:+78129228707" class="contacts-group__btn contacts-group__btn--main btn btn--lg btn--secondary-color">
+									<div class="contact-us__links">
+										<a href="tel:+78129228707" class="contact-us__btn contact-us__btn--main btn btn--lg btn--secondary-color">
 
 											<div class="btn__icon">
 												<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1006,25 +1033,22 @@
 
 										</a>
 
-										<a href="mailto:vss-company@bk.ru" class="contacts-group__btn contacts-group__btn--side btn btn--lg btn--transparent-white">
+										<a href="mailto:vss-company@bk.ru" class="contact-us__btn contact-us__btn--side btn btn--lg btn--transparent-white">
 
 											<span class="btn__text link link--lg text-inverse">vss-company@bk.ru</span>
 
 										</a>
 									</div>
 
-									<!-- <span class="contacts-group__caption text-inverse">* стоимость работ рассчитывается
-										индивидуально для каждого объекта</span> -->
+									<div class="contact-us__img">
+										<img src="img/staff/manager.webp" alt="Менеджер" width="224" height="224" loading="lazy">
+									</div>
 
 								</div>
 
 								<span class="contact-us__caption text-inverse">* стоимость работ рассчитывается
 									индивидуально для каждого объекта</span>
 
-							</div>
-
-							<div class="contact-us__img">
-								<img src="img/staff/manager.webp" alt="Менеджер" width="224" height="224" loading="lazy">
 							</div>
 
 						</div>
@@ -1165,52 +1189,73 @@
 
 					</div>
 
-					<ul class="footer__menu-list">
+					<div class="footer__nav">
 
-						<li class="footer__menu-item menu-item menu-item--footer">
-							<a href="services.html" class="menu-item__link link link-states link-padding">Услуги</a>
-							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
-								<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
-							</svg>
-						</li>
+						<ul class="footer__menu-list">
 
-						<li class="footer__menu-item menu-item menu-item--footer">
-							<a href="equipment.html" class="menu-item__link link link-states link-padding">Оборудование</a>
-							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
-								<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
-							</svg>
-						</li>
+							<li class="footer__menu-item menu-item menu-item--footer">
+								<a href="services.html" class="menu-item__link link link-states link-padding">Услуги</a>
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
+									<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
+								</svg>
+							</li>
 
-						<li class="footer__menu-item menu-item menu-item--footer">
-							<a href="projects.html" class="menu-item__link link link-states link-padding">Проекты</a>
-							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
-								<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
-							</svg>
-						</li>
+							<li class="footer__menu-item menu-item menu-item--footer">
+								<a href="equipment.html" class="menu-item__link link link-states link-padding">Оборудование</a>
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
+									<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
+								</svg>
+							</li>
 
-						<li class="footer__menu-item menu-item menu-item--footer">
-							<a href="about-us.html" class="menu-item__link link link-states link-padding">О Компании</a>
-							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
-								<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
-							</svg>
-						</li>
+							<li class="footer__menu-item menu-item menu-item--footer">
+								<a href="projects.html" class="menu-item__link link link-states link-padding">Проекты</a>
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
+									<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
+								</svg>
+							</li>
 
-						<li class="footer__menu-item menu-item menu-item--footer">
-							<a href="contacts.html" class="menu-item__link link link-states link-padding">Контакты</a>
-							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
-								<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
-							</svg>
-						</li>
+							<li class="footer__menu-item menu-item menu-item--footer">
+								<a href="about-us.html" class="menu-item__link link link-states link-padding">О Компании</a>
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
+									<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
+								</svg>
+							</li>
 
-						<li class="footer__menu-item menu-item menu-item--footer">
-							<a href="jobs.html" class="menu-item__link link link-states link-padding">Вакансии</a>
-							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
-								<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
-							</svg>
-						</li>
+							<li class="footer__menu-item menu-item menu-item--footer">
+								<a href="contacts.html" class="menu-item__link link link-states link-padding">Контакты</a>
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
+									<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
+								</svg>
+							</li>
 
-					</ul>
+							<li class="footer__menu-item menu-item menu-item--footer">
+								<a href="jobs.html" class="menu-item__link link link-states link-padding">Вакансии</a>
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
+									<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
+								</svg>
+							</li>
 
+						</ul>
+
+						<ul class="footer__menu-list footer__menu-list--legal">
+
+							<li class="footer__menu-item menu-item menu-item--footer menu-item--footer-no-bt">
+								<a href="privacy.html" class="menu-item__link link link-states link-padding">Политика конфиденциальности</a>
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
+									<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
+								</svg>
+							</li>
+
+							<li class="footer__menu-item menu-item menu-item--footer">
+								<a href="agreement.html" class="menu-item__link link link-states link-padding">Пользовательское соглашение</a>
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item__arrow-link arrow-link">
+									<path d="M4.69731 7.23338L11.7684 7.23338H12.7694L12.7738 8.23438V15.3054L12.7738 16.3064L11.7728 16.3064H10.7718V15.3054L10.7696 10.6496V9.23316H9.35758L4.69731 9.23537H3.69631V8.23438V7.23338L4.69731 7.23338Z" fill="white" />
+								</svg>
+							</li>
+
+						</ul>
+
+					</div>
 
 					<div class="footer__copyright inactive">© ООО «ВОДОПОНИЖЕНИЕ СЕВЕРНОЙ СТОЛИЦЫ», 2025</div>
 
@@ -1231,7 +1276,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250327023801"></script>
+	<script src="js/app.min.js?_v=20250411233907"></script>
 </body>
 
 </html>
