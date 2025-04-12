@@ -4034,19 +4034,6 @@
     const html = document.documentElement;
     const header = document.querySelector(".header");
     const aside = document.querySelector(".posts__aside");
-    function adjustMainBodyMargins() {
-        const MARGIN_OFFSET = 20;
-        if (footer && mainBody) {
-            const footerHeight = footer.offsetHeight;
-            const marginBottom = Math.max(0, footerHeight - MARGIN_OFFSET);
-            mainBody.style.marginBottom = `${marginBottom}px`;
-        }
-        if (heroPage && mainBody) {
-            const heroHeight = heroPage.offsetHeight;
-            const marginTop = Math.max(0, heroHeight - MARGIN_OFFSET);
-            mainBody.style.marginTop = `${marginTop}px`;
-        }
-    }
     function handleFooterVisibility() {
         const currentHero = hero || heroPage;
         if (!currentHero || !footer) return;
@@ -4097,13 +4084,11 @@
         }
     }
     document.addEventListener("DOMContentLoaded", (() => {
-        adjustMainBodyMargins();
         adjustElementsPosition();
         handleHeaderAndMainBodyInteraction();
         checkAsideHeight();
     }));
     window.addEventListener("resize", (() => {
-        adjustMainBodyMargins();
         adjustElementsPosition();
         checkAsideHeight();
     }));
