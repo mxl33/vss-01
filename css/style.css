@@ -1249,7 +1249,7 @@ body {
   overflow: hidden;
   cursor: -webkit-grab;
   cursor: grab;
-  width: 100%
+  min-width: 100%
 }
 .hero__slide-img {
   width: 100%;
