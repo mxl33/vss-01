@@ -4034,19 +4034,6 @@
     const html = document.documentElement;
     const header = document.querySelector(".header");
     const aside = document.querySelector(".posts__aside");
-    function adjustMainBodyMargins() {
-        const MARGIN_OFFSET = 20;
-        if (footer && mainBody) {
-            const footerHeight = footer.offsetHeight;
-            const marginBottom = Math.max(0, footerHeight - MARGIN_OFFSET);
-            mainBody.style.marginBottom = `${marginBottom}px`;
-        }
-        if (heroPage && mainBody) {
-            const heroHeight = heroPage.offsetHeight;
-            const marginTop = Math.max(0, heroHeight - MARGIN_OFFSET);
-            mainBody.style.marginTop = `${marginTop}px`;
-        }
-    }
     function handleFooterVisibility() {
         const currentHero = hero || heroPage;
         if (!currentHero || !footer) return;
@@ -4071,15 +4058,17 @@
             const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
             return parseFloat(headerHeightVar) * rootFontSize;
         };
-        const hasAbsolutePosition = element => element && getComputedStyle(element).position === "absolute";
+        const hasRelativePosition = element => element && getComputedStyle(element).position === "relative";
         const checkClasses = () => {
             const headerHeight = getHeaderHeight();
+            let heroHeight = 0;
+            if (heroPage) heroHeight = heroPage.offsetHeight; else if (hero) heroHeight = hero.offsetHeight;
             const mainBodyMarginTop = parseFloat(getComputedStyle(mainBody).marginTop);
-            const heroIsAbsolute = hasAbsolutePosition(hero);
-            const heroPageIsAbsolute = hasAbsolutePosition(heroPage);
-            const headerTouchesMainBody = window.scrollY >= mainBodyMarginTop - headerHeight;
-            const heroCondition = heroIsAbsolute && window.scrollY > 0;
-            const heroPageCondition = heroPageIsAbsolute && window.scrollY > 0;
+            const heroIsRelative = hasRelativePosition(hero);
+            const heroPageIsRelative = hasRelativePosition(heroPage);
+            const headerTouchesMainBody = window.scrollY >= heroHeight - headerHeight + mainBodyMarginTop;
+            const heroCondition = heroIsRelative && window.scrollY > 0;
+            const heroPageCondition = heroPageIsRelative && window.scrollY > 0;
             header.classList.toggle("on-main-body-header", headerTouchesMainBody || heroCondition || heroPageCondition);
             html.classList.toggle("on-main-body", headerTouchesMainBody);
         };
@@ -4097,13 +4086,11 @@
         }
     }
     document.addEventListener("DOMContentLoaded", (() => {
-        adjustMainBodyMargins();
         adjustElementsPosition();
         handleHeaderAndMainBodyInteraction();
         checkAsideHeight();
     }));
     window.addEventListener("resize", (() => {
-        adjustMainBodyMargins();
         adjustElementsPosition();
         checkAsideHeight();
     }));
