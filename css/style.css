@@ -323,12 +323,6 @@ summary::-webkit-details-marker {
   padding: .75rem
 }
 .main-body {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  will-change: scroll-position;
-  -webkit-overflow-scrolling: touch;
-  
   border-radius: 1.25rem;
   box-shadow: 0 -.25rem 1.25rem 0 rgba(0,0,0,.2);
   position: relative;
@@ -1254,7 +1248,8 @@ body {
   position: relative;
   overflow: hidden;
   cursor: -webkit-grab;
-  cursor: grab
+  cursor: grab;
+  min-width: 100%
 }
 .hero__slide-img {
   width: 100%;
@@ -1388,6 +1383,9 @@ body {
   font-weight: 600;
   color: var(--text-300);
   line-height: 120%
+}
+.services__item-text {
+  line-height: 130%
 }
 .services__item-img-wrapper {
   position: relative;
@@ -2374,6 +2372,9 @@ i.wpc-toggle-children-list:before {
   }
   .hero__sub-title {
     margin-bottom: 5.375rem
+  }
+  .services__item-text {
+    font-size: 1.1875rem
   }
   .stages__step-img img {
     width: 17.5rem
@@ -4164,6 +4165,11 @@ i.wpc-toggle-children-list:before {
   .contact-details__offer-img-mobile img {
     max-width: initial;
     width: 25rem
+  }
+}
+@media (max-width:24.37375em) {
+  .services__item-text {
+    font-size: .75rem
   }
 }
 @media (max-width:22.5em) {
@@ -7340,6 +7346,18 @@ i.wpc-toggle-children-list:before {
   @supports not (height:clamp(25rem ,14.2854591776rem + 47.6201814329vw ,50rem)) {
     .hero__img-group-ani {
       height: calc(25rem + 25 * (100vw - 22.5rem)/ 52.49875)
+    }
+  }
+}
+@media (min-width:24.37375em) and (max-width:99.99875em) {
+  @supports (font-size:clamp(0.75rem ,0.6089948347rem + 0.5785123967vw ,1.1875rem)) {
+    .services__item-text {
+      font-size: clamp(.75rem ,.6089948347rem + .5785123967vw ,1.1875rem)
+    }
+  }
+  @supports not (font-size:clamp(0.75rem ,0.6089948347rem + 0.5785123967vw ,1.1875rem)) {
+    .services__item-text {
+      font-size: calc(.75rem + .4375 * (100vw - 24.37375rem)/ 75.625)
     }
   }
 }
