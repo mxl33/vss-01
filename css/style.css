@@ -1039,12 +1039,15 @@ summary::-webkit-details-marker {
   color: var(--text-inverse)
 }
 .footer {
-  position: sticky;
+  position: relative;
   bottom: 0;
   width: 100%;
   padding-top: calc(1.25rem);
   background: var(--gradient-md);
   background: linear-gradient(45deg,#1a293e 0,#1e3554 100%)
+}
+.footer--sticky {
+  position: sticky
 }
 .footer.footer--static {
   position: static
@@ -1157,6 +1160,9 @@ body {
   top: 0;
   width: 100%
 }
+.hero--relative {
+  position: relative
+}
 .hero__img-mobile {
   display: none
 }
@@ -1204,7 +1210,7 @@ body {
   position: relative;
   display: grid;
   grid-template-rows: 1fr auto auto auto 1fr;
-  padding-bottom: 2.5rem
+  padding-bottom: 3.125rem
 }
 .hero__services {
   display: flex;
@@ -1639,6 +1645,9 @@ body {
   top: 0;
   width: 100%;
   background: var(--gradient-md)
+}
+.hero-page--relative {
+  position: relative
 }
 .hero-page--static {
   position: relative

@@ -4034,11 +4034,20 @@
     const html = document.documentElement;
     const header = document.querySelector(".header");
     const aside = document.querySelector(".posts__aside");
-    function handleFooterVisibility() {
-        const currentHero = hero || heroPage;
-        if (!currentHero || !footer) return;
-        const heroHeight = currentHero.offsetHeight;
-        footer.style.visibility = window.scrollY > heroHeight ? "visible" : "hidden";
+    document.querySelector(".page");
+    function handleHeroScroll() {
+        const targetElement = hero || heroPage;
+        if (!targetElement) return;
+        const className = hero ? "hero--relative" : "hero-page--relative";
+        const elementHeight = targetElement.offsetHeight;
+        if (window.pageYOffset >= elementHeight + 200) targetElement.classList.add(className); else targetElement.classList.remove(className);
+    }
+    function handleFooterScroll() {
+        if (!footer) return;
+        const pageHeight = document.body.scrollHeight;
+        const footerHeight = footer.offsetHeight;
+        const windowHeight = window.innerHeight;
+        if (window.pageYOffset >= pageHeight - footerHeight - windowHeight - 200) footer.classList.add("footer--sticky"); else footer.classList.remove("footer--sticky");
     }
     function adjustElementsPosition() {
         const viewportHeight = window.innerHeight;
@@ -4093,8 +4102,12 @@
     window.addEventListener("resize", (() => {
         adjustElementsPosition();
         checkAsideHeight();
+        handleFooterScroll();
     }));
-    window.addEventListener("scroll", handleFooterVisibility);
+    window.addEventListener("scroll", (function() {
+        handleHeroScroll();
+        handleFooterScroll();
+    }));
     window["FLS"] = true;
     menuInit();
     spollers();
