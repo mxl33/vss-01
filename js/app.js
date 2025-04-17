@@ -4034,11 +4034,20 @@
     const html = document.documentElement;
     const header = document.querySelector(".header");
     const aside = document.querySelector(".posts__aside");
-    function handleFooterVisibility() {
-        const currentHero = hero || heroPage;
-        if (!currentHero || !footer) return;
-        const heroHeight = currentHero.offsetHeight;
-        footer.style.visibility = window.scrollY > heroHeight ? "visible" : "hidden";
+    const page = document.querySelector(".page");
+    function handleScrollClasses() {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        if (hero) {
+            const heroHeight = hero.offsetHeight;
+            if (scrollPosition >= heroHeight) hero.classList.add("hero--relative"); else hero.classList.remove("hero--relative");
+        } else if (heroPage) {
+            const heroPageHeight = heroPage.offsetHeight;
+            if (scrollPosition >= heroPageHeight) heroPage.classList.add("hero-page--relative"); else heroPage.classList.remove("hero-page--relative");
+        }
+        if (page && footer) {
+            const pageHeight = page.offsetHeight;
+            if (scrollPosition >= pageHeight) footer.classList.add("footer--sticky"); else footer.classList.remove("footer--sticky");
+        }
     }
     function adjustElementsPosition() {
         const viewportHeight = window.innerHeight;
@@ -4058,15 +4067,17 @@
             const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
             return parseFloat(headerHeightVar) * rootFontSize;
         };
-        const hasAbsolutePosition = element => element && getComputedStyle(element).position === "absolute";
+        const hasRelativePosition = element => element && getComputedStyle(element).position === "relative";
         const checkClasses = () => {
             const headerHeight = getHeaderHeight();
+            let heroHeight = 0;
+            if (heroPage) heroHeight = heroPage.offsetHeight; else if (hero) heroHeight = hero.offsetHeight;
             const mainBodyMarginTop = parseFloat(getComputedStyle(mainBody).marginTop);
-            const heroIsAbsolute = hasAbsolutePosition(hero);
-            const heroPageIsAbsolute = hasAbsolutePosition(heroPage);
-            const headerTouchesMainBody = window.scrollY >= mainBodyMarginTop - headerHeight;
-            const heroCondition = heroIsAbsolute && window.scrollY > 0;
-            const heroPageCondition = heroPageIsAbsolute && window.scrollY > 0;
+            const heroIsRelative = hasRelativePosition(hero);
+            const heroPageIsRelative = hasRelativePosition(heroPage);
+            const headerTouchesMainBody = window.scrollY >= heroHeight - headerHeight + mainBodyMarginTop;
+            const heroCondition = heroIsRelative && window.scrollY > 0;
+            const heroPageCondition = heroPageIsRelative && window.scrollY > 0;
             header.classList.toggle("on-main-body-header", headerTouchesMainBody || heroCondition || heroPageCondition);
             html.classList.toggle("on-main-body", headerTouchesMainBody);
         };
@@ -4092,7 +4103,9 @@
         adjustElementsPosition();
         checkAsideHeight();
     }));
-    window.addEventListener("scroll", handleFooterVisibility);
+    window.addEventListener("scroll", (function() {
+        handleScrollClasses();
+    }));
     window["FLS"] = true;
     menuInit();
     spollers();

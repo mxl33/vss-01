@@ -329,7 +329,9 @@ summary::-webkit-details-marker {
   z-index: 2;
   min-height: 100vh;
   background-color: var(--neutral-50);
-  transition: border-radius .5s var(--t-func) var(--t-del)
+  transition: border-radius .5s var(--t-func) var(--t-del);
+  margin-top: -1.25rem;
+  margin-bottom: -1.25rem
 }
 .main-body::before {
   content: "";
@@ -1155,6 +1157,9 @@ body {
   top: 0;
   width: 100%
 }
+.hero--relative {
+  position: relative
+}
 .hero__img-mobile {
   display: none
 }
@@ -1166,7 +1171,7 @@ body {
   position: relative;
   z-index: 1;
   background: var(--gradient-opacity);
-  height: 100vh;
+  height: calc(100vh + 1.25rem);
   max-height: calc(62.5rem + 1.25rem);
   min-height: calc(43.75rem + 1.25rem)
 }
@@ -1202,7 +1207,7 @@ body {
   position: relative;
   display: grid;
   grid-template-rows: 1fr auto auto auto 1fr;
-  padding-bottom: 2.5rem
+  padding-bottom: 3.125rem
 }
 .hero__services {
   display: flex;
@@ -1639,7 +1644,7 @@ body {
   background: var(--gradient-md)
 }
 .hero-page--static {
-  position: static
+  position: relative
 }
 .hero-page::before {
   content: "";
@@ -3021,7 +3026,7 @@ i.wpc-toggle-children-list:before {
 }
 @media (min-width:1920px) and (max-height:36.458333vw) {
   .hero {
-    position: absolute
+    position: relative
   }
 }
 @media (max-width:64em) {
@@ -3935,7 +3940,7 @@ i.wpc-toggle-children-list:before {
 }
 @media (max-height:calc(41.25em + 0rem)) and (max-width:47.99875em) {
   .hero {
-    position: absolute
+    position: relative
   }
 }
 @media (max-width:41.24875em) {
@@ -7733,6 +7738,6 @@ i.wpc-toggle-children-list:before {
 }
 @media (max-height:calc(43.75em + 0rem)) {
   .hero {
-    position: absolute
+    position: relative
   }
 }
